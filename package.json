@@ -1,0 +1,24 @@
+{
+  "name": "week_2",
+  "version": "1.0.0",
+  "description": "week 2 project",
+  "main": "index.js",
+  "dependencies": {
+    "ansi-red": "^0.1.1",
+    "eslint": "^4.9.0"
+  },
+  "devDependencies": {},
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/BOZ2323/js_crashcourse.git"
+  },
+  "author": "Lilli Baaske",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/BOZ2323/js_crashcourse/issues"
+  },
+  "homepage": "https://github.com/BOZ2323/js_crashcourse#readme"
+}
