@@ -14,12 +14,16 @@ class Recipe {
 
 
     checkRecipe(foodAtHome, ingredients) {
-        for (var i = 0; i < ingredients.length; i++) {
-            if (i == foodAtHome) {
-                this.kitchenTable.push(i);
+        ingredients.forEach(function(element) {
+            if (element == foodAtHome) {
+
+                console.log(foodAtHome);
+                this.kitchenTable.push(foodAtHome);
                 return this.kitchenTable;
+
             }
-        }
+
+        })
 
     }
 }
