@@ -1,5 +1,5 @@
 const red = require("ansi-red");
-console.log("Hello world");
+console.log(red("Haaaallo world"));
 const Person = require('./person')
 const Database = require('./database')
 const add = (num1, num2) => num1 + num2 + 2;
