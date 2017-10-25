@@ -1,4 +1,3 @@
-const DinnerPartyGuest = require('./DinnerPartyGuest');
 console.log("Recipe.js works!");
 module.exports = class Recipe {
     constructor(recipeName, ingredients) {
