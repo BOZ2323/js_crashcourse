@@ -1,7 +1,7 @@
 console.log("Recipe.js works!");
 module.exports = class Recipe {
-    constructor(recipeName, ingredients) {
-        this.recipeName = recipeName;
+    constructor(name, ingredients) {
+        this.name = name;
         this.ingredients = ingredients;
         this.kitchenTable = [];
     }
