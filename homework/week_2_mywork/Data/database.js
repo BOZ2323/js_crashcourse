@@ -1,7 +1,7 @@
 const fs = require('fs');
 
 const chooseDataJson = {
-    DinnerPartyguest: {
+    DinnerPartyGuest: {
         name: 'DinnerPartyGuest',
         file: './Data/Dinnerguest_data.json'
     },
@@ -13,12 +13,13 @@ const chooseDataJson = {
 exports.save = (database, item) => {
     const name = chooseDataJson[database].name
     const file = chooseDataJson[database].file
+    console.log("***", file);
 
-    fs.writeFileSync(file, JSON.stringify({
-        [name]: item
-    }))
+    fs.writeFileSync(file, JSON.stringify(
+        name))
 }
 exports.load = (database) => {
+    console.log(database);
     const file = chooseDataJson[database].file
     return JSON.parse(fs.readFileSync(file, 'utf8'))
 }
