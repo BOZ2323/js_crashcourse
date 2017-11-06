@@ -10,13 +10,13 @@ const chooseDataJson = {
         file: './Data/Recipe_data.json'
     },
 }
-exports.save = (database, item) => {
-    const name = chooseDataJson[database].name
-    const file = chooseDataJson[database].file
+exports.save = (database, cb) => {
+    const name = chooseDataJson[database].name;
+    const file = chooseDataJson[database].file;
     console.log("***", file);
 
     fs.writeFileSync(file, JSON.stringify(
-        name))
+        name), cb)
 }
 exports.load = (database) => {
     console.log(database);
