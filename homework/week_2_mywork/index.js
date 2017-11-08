@@ -1,41 +1,44 @@
 const DinnerPartyGuest = require('./DinnerPartyGuest');
 const Recipe = require('./Recipe');
-const Database = require('./Data/database');
+const DatabaseA = require('./Data/databaseA');
+const DatabaseB = require('./Data/databaseB');
+//this works: Part A
+//const Database = require('./Data/database');
 
+console.log("Show, you are not afraid!!")
 
-
-const allRecipes = [];
 const Burger = new Recipe('Burger', ['burgerbuns', 'onions', 'tomatoes', 'cheese', 'lettuce', 'beefpatties']);
-allRecipes.push('Burger');
 const Pasta = new Recipe('Pasta', ['pasta', 'onions', 'tomatoes', 'garlic', 'sardines', 'babyspinach']);
-allRecipes.push('Pasta');
 const SpringRolls = new Recipe('Springrolls', ['ricepaper', 'carrots', 'hoisin sauce', 'rice', 'coriander', 'springonions']);
-allRecipes.push('Springrolls');
 
-
-
-
-const allGuests = [];
 const Fredo = new DinnerPartyGuest('Fredo', 'tomatoes');
-allGuests.push('Fredo');
 const Mina = new DinnerPartyGuest('Mina', 'pasta');
-allGuests.push('Mina');
 const Sascha = new DinnerPartyGuest('Sascha', 'lettuce');
-allGuests.push('Sascha');
 
+const allGuests = [Fredo, Mina, Sascha];
+const allRecipes = [Burger, Pasta, SpringRolls];
 
-Database.save(allRecipes);
-Database.save(allGuests);
+DatabaseA.save(allRecipes);
+DatabaseB.save(allGuests);
+console.log(allRecipes);
+//Database.save(allGuests);
 
-const loadedRecipes = Database.load('Recipe');
+//this works: part B
+/* Database.save(allRecipes);
+console.log(allRecipes); */
+//Database.save(allGuests);
+
+const loadedRecipes = DatabaseA.load('Recipe');
 const firstRecipe = Recipe.create(loadedRecipes[1]);
-const loadedGuests = Database.load('DinnerPartyGuest');
+const loadedGuests = DatabaseB.load('DinnerPartyGuest');
 const firstPerson = DinnerPartyGuest.create(loadedGuests[0]);
 const secondPerson = DinnerPartyGuest.create(loadedGuests[1]);
+//read from database, convert it objects and make sure that the behaviour still works.
+const convertedRecipes = loadedRecipes.map(Recipe.create);
 //with create() you dont need to know anything about the inner properties of a class
+convertedRecipes[2].sayName();
 
-
-/* firstPerson.sayName();
+firstPerson.sayName();
 secondPerson.sayName();
 firstRecipe.sayName();
-firstRecipe.checkRecipe('mina', 'sauerkraut', firstRecipe.ingredients) */
+firstRecipe.checkRecipe('mina', 'sauerkraut', firstRecipe.ingredients)

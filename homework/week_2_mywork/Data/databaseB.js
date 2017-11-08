@@ -1,10 +1,10 @@
 const fs = require('fs');
 //this works!
-exports.save = (allRecipe) => {
-    fs.writeFileSync('./Data/Recipe_data.json', JSON.stringify(allRecipe))
+exports.save = (allGuests) => {
+    fs.writeFileSync('./Data/Dinnerguest_data.json', JSON.stringify(allGuests))
 }
 exports.load = () => {
-    return JSON.parse(fs.readFileSync('./Data/Recipe_data.json', 'utf8'))
+    return JSON.parse(fs.readFileSync('./Data/Dinnerguest_data.json', 'utf8'))
 }
 
 /* const chooseDataJson = {
