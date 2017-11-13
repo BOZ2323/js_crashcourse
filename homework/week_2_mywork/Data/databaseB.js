@@ -1,34 +1,16 @@
 const fs = require('fs');
 //this works!
-exports.save = (allGuests) => {
-    fs.writeFileSync('./Data/Dinnerguest_data.json', JSON.stringify(allGuests))
-}
-exports.load = () => {
-    return JSON.parse(fs.readFileSync('./Data/Dinnerguest_data.json', 'utf8'))
+// exports.save = (allGuests, cb) => {
+//     fs.writeFile('./Data/Dinnerguest_data.json', JSON.stringify(allGuests), cb);
+// };
+// exports.load = () => {
+//     return JSON.parse(fs.readFile('./Data/Dinnerguest_data.json', 'utf8'));
+// };
+
+exports.writeWeeks = async(array) => {
+    await fs.writeFileSync('./dataweeks.json', JSON.stringify(array));
 }
 
-/* const chooseDataJson = {
-    DinnerPartyguest: {
-        name: 'DinnerPartyGuest',
-        file: './Data/Dinnerguest_data.json'
-    },
-    Recipe: {
-        name: 'Recipe',
-        file: './Data/Recipe_data.json'
-    },
+exports.readTopics = () => {
+    return JSON.parse(fs.readFileSync('./datatopics.json', 'utf8'));
 }
-exports.save = (database, cb) => {
-    const name = chooseDataJson[database].name;
-    const file = chooseDataJson[database].file;
-    console.log(name);
-
-    fs.writeFileSync(file, JSON.stringify({
-        [name]: item
-    }))
-}
-
-exports.load = (database) => {
-    console.log(database);
-    const file = chooseDataJson[database].file
-    return JSON.parse(fs.readFileSync(file, 'utf8'))
-} */

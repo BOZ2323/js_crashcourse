@@ -19,26 +19,20 @@ const allGuests = [Fredo, Mina, Sascha];
 const allRecipes = [Burger, Pasta, SpringRolls];
 
 DatabaseA.save(allRecipes);
-DatabaseB.save(allGuests);
-console.log(allRecipes);
-//Database.save(allGuests);
-
-//this works: part B
-/* Database.save(allRecipes);
-console.log(allRecipes); */
-//Database.save(allGuests);
+DatabaseB.save(allGuests, (err) => { console.log(err) });
 
 const loadedRecipes = DatabaseA.load('Recipe');
+console.log(Recipe);
 const firstRecipe = Recipe.create(loadedRecipes[1]);
-const loadedGuests = DatabaseB.load('DinnerPartyGuest');
-const firstPerson = DinnerPartyGuest.create(loadedGuests[0]);
-const secondPerson = DinnerPartyGuest.create(loadedGuests[1]);
+// const loadedGuests = DatabaseB.load('DinnerPartyGuest');
+// const firstPerson = DinnerPartyGuest.create(loadedGuests[0]);
+// const secondPerson = DinnerPartyGuest.create(loadedGuests[1]);
 //read from database, convert it objects and make sure that the behaviour still works.
-const convertedRecipes = loadedRecipes.map(Recipe.create);
+// const convertedRecipes = loadedRecipes.map(Recipe.create);
 //with create() you dont need to know anything about the inner properties of a class
-convertedRecipes[2].sayName();
+// convertedRecipes[2].sayName();
 
-firstPerson.sayName();
-secondPerson.sayName();
+//firstPerson.sayName();
+// secondPerson.sayName();
 firstRecipe.sayName();
 firstRecipe.checkRecipe('mina', 'sauerkraut', firstRecipe.ingredients)

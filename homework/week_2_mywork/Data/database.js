@@ -1,34 +1,20 @@
-const fs = require('fs');
-//this works!
-exports.save = (allRecipe) => {
-    fs.writeFileSync('./Data/Recipe_data.json', JSON.stringify(allRecipe))
-}
-exports.load = () => {
-    return JSON.parse(fs.readFileSync('./Data/Recipe_data.json', 'utf8'))
+const fs = require('fs')
+
+exports.save = (data, filepath) => {
+    return new Promise((resolve, reject) => {
+        fs.writeFile(filepath, JSON.stringify(data), (err, contents) => {
+            if (err) return reject(err)
+            resolve(contents)
+        })
+    })
 }
 
-/* const chooseDataJson = {
-    DinnerPartyguest: {
-        name: 'DinnerPartyGuest',
-        file: './Data/Dinnerguest_data.json'
-    },
-    Recipe: {
-        name: 'Recipe',
-        file: './Data/Recipe_data.json'
-    },
+//Using async
+exports.load = async(filepath) => {
+    return new Promise((resolve, reject) => {
+        return fs.readFile(filepath, 'utf8', (err, contents) => {
+            if (err) return reject(err)
+            resolve(JSON.parse(contents))
+        })
+    })
 }
-exports.save = (database, cb) => {
-    const name = chooseDataJson[database].name;
-    const file = chooseDataJson[database].file;
-    console.log(name);
-
-    fs.writeFileSync(file, JSON.stringify({
-        [name]: item
-    }))
-}
-
-exports.load = (database) => {
-    console.log(database);
-    const file = chooseDataJson[database].file
-    return JSON.parse(fs.readFileSync(file, 'utf8'))
-} */
