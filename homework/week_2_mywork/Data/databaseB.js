@@ -1,16 +1,18 @@
 const fs = require('fs');
-//this works!
-// exports.save = (allGuests, cb) => {
-//     fs.writeFile('./Data/Dinnerguest_data.json', JSON.stringify(allGuests), cb);
-// };
+
+//async Version: doesn' work
+exports.save = (allGuests, cb) => {
+    fs.writeFile('./Data/Dinnerguest_data.json', JSON.stringify(allGuests), cb)
+};
+exports.load = () => {
+    return JSON.parse(fs.readFile('./Data/Dinnerguest_data.json', 'utf8'))
+};
+
+//sync Version: works
+
+// exports.save = (allGuests) => {
+//     fs.writeFileSync('./Data/Dinnerguest_data.json', JSON.stringify(allGuests))
+// }
 // exports.load = () => {
-//     return JSON.parse(fs.readFile('./Data/Dinnerguest_data.json', 'utf8'));
-// };
-
-exports.writeWeeks = async(array) => {
-    await fs.writeFileSync('./dataweeks.json', JSON.stringify(array));
-}
-
-exports.readTopics = () => {
-    return JSON.parse(fs.readFileSync('./datatopics.json', 'utf8'));
-}
+//     return JSON.parse(fs.readFileSync('./Data/Dinnerguest_data.json', 'utf8'))
+// }
