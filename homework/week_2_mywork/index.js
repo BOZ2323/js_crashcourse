@@ -26,10 +26,22 @@ const loadedRecipes = DatabaseA.load('Recipe');
 const firstRecipe = Recipe.create(loadedRecipes[1]);
 
 const loadedGuests = DatabaseB.load('DinnerPartyGuest');
-const firstPerson = DinnerPartyGuest.create(loadedGuests[0]);
-const convertedRecipes = loadedRecipes.map(Recipe.create);
-convertedRecipes[2].sayName();
 
-firstPerson.sayName();
-firstRecipe.sayName();
-firstRecipe.checkRecipe('mina', 'sauerkraut', firstRecipe.ingredients)
+
+//*********
+DatabaseB.load((loadedGuests) => {
+    const firstPerson = DinnerPartyGuest.create(loadedGuests[0]);
+    console.log(loadedGuests[0]);
+    const convertedRecipes = loadedRecipes.map(Recipe.create);
+    convertedRecipes[2].sayName();
+});
+
+//*********
+
+// const firstPerson = DinnerPartyGuest.create(loadedGuests[0]);
+// const convertedRecipes = loadedRecipes.map(Recipe.create);
+// convertedRecipes[2].sayName();
+// DatabaseB.load();
+// firstPerson.sayName();
+// firstRecipe.sayName();
+// firstRecipe.checkRecipe('mina', 'sauerkraut', firstRecipe.ingredients)
